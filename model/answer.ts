@@ -28,4 +28,12 @@ export default class AnswerModel {
   get revealed() {
     return this.#revealed;
   }
+
+  toObject() {
+    return {
+      value: this.#value,
+      correct: this.#correct,
+      revealed: this.#revealed
+    }
+  }
 }

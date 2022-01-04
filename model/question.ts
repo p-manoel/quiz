@@ -35,4 +35,13 @@ export default class QuestionModel {
     }
     return false;
   }
+
+  toObject() {
+    return {
+      id: this.#id,
+      question: this.#question,
+      answers: [],
+      correct: this.#correct
+    }
+  }
 }
