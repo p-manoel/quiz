@@ -40,7 +40,7 @@ export default class QuestionModel {
     return {
       id: this.#id,
       question: this.#question,
-      answers: this.#answers.map(answer => answer.toObject()),
+      answers: [],
       correct: this.#correct
     }
   }
