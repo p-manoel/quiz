@@ -8,7 +8,7 @@ const questions: QuestionModel[] = [
     AnswerModel.incorrect('Manchester SHITy'),
     AnswerModel.correct('Barcelona'),
   ], false),
-  new QuestionModel(1, 'Who is better than Penaldo', [
+  new QuestionModel(2, 'Who is better than Penaldo', [
     AnswerModel.incorrect('Lionel GOAT Messi'),
     AnswerModel.incorrect('WIZARD Ronaldinho'),
     AnswerModel.incorrect('Kylian TURTLE Mbappé'),
