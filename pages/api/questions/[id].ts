@@ -1,13 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type Data = {
-  id: number
-  name: string
-}
+import questions from "../questionsDB";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  res.status(200).json({
-    id: +req.query.id,
-    name: 'John Doe'
-  })
+  res.status(200).json(questions[0]);
 }
