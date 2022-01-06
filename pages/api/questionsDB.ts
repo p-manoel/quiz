@@ -12,7 +12,7 @@ const questions: QuestionModel[] = [
     AnswerModel.incorrect('Lionel GOAT Messi'),
     AnswerModel.incorrect('WIZARD Ronaldinho'),
     AnswerModel.incorrect('Kylian TURTLE Mbappé'),
-    AnswerModel.correct('All players above'),
+    AnswerModel.correct('All other alternatives'),
   ], false),
   new QuestionModel(3, 'Which is the smaller club in Premier League?', [
     AnswerModel.incorrect('Burnley'),
@@ -24,12 +24,12 @@ const questions: QuestionModel[] = [
     AnswerModel.incorrect('Head penalty'),
     AnswerModel.incorrect('Penalty outside the box'),
     AnswerModel.incorrect('Penalty inside the box'),
-    AnswerModel.correct('All penaltys above'),
+    AnswerModel.correct('All other penalty alternatives'),
   ], false),new QuestionModel(5, 'Who was the Ballon d\'or winner just because penalty goals?', [
     AnswerModel.incorrect('Cristiano Penaldo'),
     AnswerModel.incorrect('Pristiano Conaldo'),
     AnswerModel.incorrect('Penaldo'),
-    AnswerModel.correct('All players above'),
+    AnswerModel.correct('All other alternatives'),
   ], false)
 ]
 
