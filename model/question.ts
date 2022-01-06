@@ -1,3 +1,4 @@
+import { randomize } from "../functions/arrays";
 import AnswerModel from "./answer";
 
 export default class QuestionModel {
@@ -34,6 +35,11 @@ export default class QuestionModel {
       if(answer.revealed) return true;
     }
     return false;
+  }
+
+  randomizeAnswers(): QuestionModel {
+    const answersRandomized = randomize(this.#answers);
+    return new QuestionModel(this.#id, this.#question, answersRandomized, this.#correct);
   }
 
   toObject() {
