@@ -5,26 +5,42 @@ interface AnswerProps {
   value: AnswerModel
   index: number
   alternative: string
-  colorAlternative: string
+  backgroundColorAlternative: string
+  onResponse: (index: number) => void
 }
 
 export default function Answer(props: AnswerProps) {
   const answer = props.value;
 
   return (
-    <div className={styles.answer}>
+    <div className={styles.answer} onClick={() => props.onResponse(props.index)}>
       <div className={styles.answerContent}>
-        <div className={styles.front}>
-          <div className={styles.alternative}>
-            {props.alternative}
+        {!answer.revealed ? (
+          <div className={styles.front}>
+            <div className={styles.alternative}
+              style={{ backgroundColor: props.backgroundColorAlternative }}
+            >
+              {props.alternative}
+            </div>
+            <div className={styles.value}>
+              {answer.value}
+            </div>
           </div>
-          <div className={styles.value}>
-            {answer.value}
+        ) : (
+          <div className={styles.back}>
+            {answer.correct ? (
+              <div className={styles.correct}>
+                <div>CORRECT!!!</div>
+                <div className={styles.value}>{answer.value}</div>
+              </div>
+            ) : (
+              <div className={styles.incorrect}>
+                <div>INCORRECT :(</div>
+                <div className={styles.value}>{answer.value}</div>
+              </div>
+            )}
           </div>
-        </div>
-        <div className={styles.back}>
-
-        </div>
+        )}
       </div>
     </div>
   )

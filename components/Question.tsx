@@ -3,8 +3,16 @@ import QuestionModel from "../model/question";
 import Utterance from "./Utterance";
 import Answer from "./Answer";
 
+const alternatives = [
+  { value: 'A', color: '#F2C866' },
+  { value: 'B', color: '#F266BA' },
+  { value: 'C', color: '#85DAF2' },
+  { value: 'D', color: '#BCE596' },
+];
+
 interface QuestionProps {
   value: QuestionModel
+  onResponse: (index: number) => void
 }
 
 export default function Question(props: QuestionProps) {
@@ -16,8 +24,9 @@ export default function Question(props: QuestionProps) {
         key={i}
         value={answer}
         index={i}
-        alternative='A'
-        colorAlternative="#F2C866"
+        alternative={alternatives[i].value}
+        backgroundColorAlternative={alternatives[i].color}
+        onResponse={props.onResponse}
       />
     })
   }

@@ -1,15 +1,24 @@
 import type { NextPage } from 'next'
+import { useState } from 'react';
 import Question from '../components/Question'
 import AnswerModel from '../model/answer';
 import QuestionModel from '../model/question'
 
+const exampleMock = new QuestionModel(1, "Some question?", [
+  AnswerModel.incorrect('answer 1'),
+  AnswerModel.incorrect('answer 2'),
+  AnswerModel.incorrect('answer 3'),
+  AnswerModel.correct('answer 4'),
+], false);
+
+
 const Home: NextPage = () => {
-  const example = new QuestionModel(1, "Some question?", [
-    AnswerModel.incorrect('answer 1'),
-    AnswerModel.incorrect('answer 2'),
-    AnswerModel.incorrect('answer 3'),
-    AnswerModel.correct('answer 4'),
-  ], false);
+  const [question, setQuestion] = useState(exampleMock);
+
+  function onResponse(index: number) {
+    setQuestion(question.replyWith(index));
+    console.log(index);
+  }
 
   return (
     <div style={{
@@ -19,7 +28,7 @@ const Home: NextPage = () => {
       alignItems: 'center'
 
     }}>
-      <Question value={example}/>
+      <Question value={question} onResponse={onResponse}/>
     </div>
   )
 }
