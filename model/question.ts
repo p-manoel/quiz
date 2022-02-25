@@ -52,6 +52,11 @@ export default class QuestionModel {
     return new QuestionModel(this.#id, this.#question, answersRandomized, this.#correct);
   }
 
+  static toModel(object: QuestionModel): QuestionModel {
+    const answers = object.answers.map((answer) => AnswerModel.toModel(answer));
+    return new QuestionModel(object.id, object.question, answers, object.correct);
+  }
+
   toObject() {
     return {
       id: this.#id,

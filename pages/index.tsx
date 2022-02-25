@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../components/Button';
 import Question from '../components/Question'
 import Quiz from '../components/Quiz';
@@ -13,9 +13,31 @@ const exampleMock = new QuestionModel(1, "Some question?", [
   AnswerModel.correct('answer 4'),
 ], false);
 
+const BASE_URL = 'http://localhost:3000/api'
 
 const Home: NextPage = () => {
-  const [question, setQuestion] = useState(exampleMock);
+  const [questionsIds, setQuestionsIds] = useState<number[]>([]);
+  const [question, setQuestion] = useState<QuestionModel>(exampleMock);
+
+  async function loadQuestionsIds() {
+    const response = await fetch(`${BASE_URL}/questionary`);
+    const ids = await response.json();
+    setQuestionsIds(ids);
+  }
+
+  async function loadQuestion(questionId: number) {
+    const response = await fetch(`${BASE_URL}/questions/${questionId}`);
+    const jsonQuestion = await response.json();
+    setQuestion(QuestionModel.toModel(jsonQuestion));
+  }
+
+  useEffect(() => {
+    loadQuestionsIds();
+  }, []);
+
+  useEffect(() => {
+    questionsIds.length > 0 && loadQuestion(questionsIds[0]);
+  }, [questionsIds]);
 
   function repliedQuestion(question: QuestionModel) {
 
