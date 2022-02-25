@@ -20,6 +20,10 @@ const Home: NextPage = () => {
     console.log(index);
   }
 
+  function timeFinished() {
+    if(!question.answered) setQuestion(question.replyWith(-1));
+  }
+
   return (
     <div style={{
       display: 'flex',
@@ -28,7 +32,7 @@ const Home: NextPage = () => {
       alignItems: 'center'
 
     }}>
-      <Question value={question} onResponse={onResponse}/>
+      <Question value={question} onResponse={onResponse} timeFinished={timeFinished}/>
     </div>
   )
 }
