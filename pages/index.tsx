@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { useState } from 'react';
+import Button from '../components/Button';
 import Question from '../components/Question'
 import AnswerModel from '../model/answer';
 import QuestionModel from '../model/question'
@@ -27,12 +28,14 @@ const Home: NextPage = () => {
   return (
     <div style={{
       display: 'flex',
+      flexDirection: 'column',
       height: '100vh',
       justifyContent: 'center',
       alignItems: 'center'
 
     }}>
-      <Question value={question} onResponse={onResponse} timeFinished={timeFinished}/>
+      <Question value={question} timeForReply={5} onResponse={onResponse} timeFinished={timeFinished}/>
+      <Button text="Next" href='/result'/>
     </div>
   )
 }

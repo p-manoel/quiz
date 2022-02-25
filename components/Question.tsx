@@ -13,6 +13,7 @@ const alternatives = [
 
 interface QuestionProps {
   value: QuestionModel
+  timeForReply?: number
   onResponse: (index: number) => void
   timeFinished: () => void
 }
@@ -36,7 +37,7 @@ export default function Question(props: QuestionProps) {
   return (
     <div className={styles.question}>
       <Utterance text={question.question}/>
-      <Timer duration={10} timeFinished={props.timeFinished}/>
+      <Timer duration={props.timeForReply ?? 10} timeFinished={props.timeFinished}/>
       {renderAnswers()}
     </div>
   )
