@@ -8,8 +8,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.0.7",
+    "next": "^12.1.0",
     "react": "17.0.2",
+    "react-countdown-circle-timer": "^3.0.8",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
