@@ -4,7 +4,8 @@ import Quiz from '../components/Quiz';
 import QuestionModel from '../model/question';
 import { useRouter } from 'next/router';
 
-const BASE_URL = 'http://localhost:3000/api'
+// const BASE_URL = 'http://localhost:3000/api'; // Local URL
+const BASE_URL = 'https://quiz-six-blond.vercel.app/api'; // Vercel URL
 
 const Home: NextPage = () => {
   const router = useRouter();
