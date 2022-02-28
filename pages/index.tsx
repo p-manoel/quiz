@@ -1,23 +1,17 @@
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react';
-import Button from '../components/Button';
-import Question from '../components/Question'
 import Quiz from '../components/Quiz';
-import AnswerModel from '../model/answer';
-import QuestionModel from '../model/question'
-
-const exampleMock = new QuestionModel(1, "Some question?", [
-  AnswerModel.incorrect('answer 1'),
-  AnswerModel.incorrect('answer 2'),
-  AnswerModel.incorrect('answer 3'),
-  AnswerModel.correct('answer 4'),
-], false);
+import QuestionModel from '../model/question';
+import { useRouter } from 'next/router';
 
 const BASE_URL = 'http://localhost:3000/api'
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
   const [questionsIds, setQuestionsIds] = useState<number[]>([]);
-  const [question, setQuestion] = useState<QuestionModel>(exampleMock);
+  const [question, setQuestion] = useState<QuestionModel>();
+  const [correctAnswers, setCorrectAnswers] = useState<number>(0);
 
   async function loadQuestionsIds() {
     const response = await fetch(`${BASE_URL}/questionary`);
@@ -40,21 +34,47 @@ const Home: NextPage = () => {
   }, [questionsIds]);
 
   function repliedQuestion(question: QuestionModel) {
+    setQuestion(question);
+    setCorrectAnswers(correctAnswers + (question.correct ? 1 : 0));
+  }
 
+  function nextQuestionId() {
+    const nextIndex = question ? questionsIds.indexOf(question.id) + 1 : -1;
+    return questionsIds[nextIndex];
   }
 
   function toNextStep() {
-
+    nextQuestionId() ? goToTheNextQuestion(nextQuestionId()) : finishQuiz();
   }
 
-  return (
-      <Quiz 
-        question={question}
-        isTheLastQuestion={false}
-        repliedQuestion={repliedQuestion}
-        toNextStep={toNextStep}
-      />
-  )
+  function goToTheNextQuestion(nextQuestionId: number) {
+    loadQuestion(nextQuestionId);
+  }
+
+  function finishQuiz() {
+    router.push({
+      pathname: '/result',
+      query: {
+        total: questionsIds.length,
+        corrects: correctAnswers
+      }
+    });
+  }
+
+  return question ? (
+    <Quiz 
+      question={question}
+      isTheLastQuestion={nextQuestionId() === undefined}
+      repliedQuestion={repliedQuestion}
+      toNextStep={toNextStep}
+    />
+  ) : (
+    <div>
+      <h1>Error :(</h1>
+    </div>
+  );
+      
+
 }
 
 export default Home

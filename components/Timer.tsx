@@ -1,7 +1,9 @@
+import { Key } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import styles from '../styles/Timer.module.css';
 
 interface TimerProps {
+  key: Key
   duration: number
   timeFinished: () => void
 }
