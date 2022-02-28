@@ -2,34 +2,53 @@ import AnswerModel from "../../model/answer";
 import QuestionModel from "../../model/question";
 
 const questions: QuestionModel[] = [
-  new QuestionModel(1, 'Which is the biggest club in the world?', [
-    AnswerModel.incorrect('VARmadrid'),
-    AnswerModel.incorrect('LiveFOOL'),
-    AnswerModel.incorrect('Manchester SHITy'),
-    AnswerModel.correct('Barcelona'),
+  new QuestionModel(1, 'What is the biggest stadium in Europe?', [
+    AnswerModel.incorrect('Wembley Stadium'),
+    AnswerModel.incorrect('Allianz Arena'),
+    AnswerModel.incorrect('San Siro'),
+    AnswerModel.correct('Camp Nou'),
   ], false),
-  new QuestionModel(2, 'Who is better than Penaldo?', [
-    AnswerModel.incorrect('Lionel GOAT Messi'),
-    AnswerModel.incorrect('WIZARD Ronaldinho'),
-    AnswerModel.incorrect('Kylian TURTLE Mbappé'),
-    AnswerModel.correct('All other alternatives'),
+  new QuestionModel(2, "How many Ballon d'Or does Lionel Messi have?", [
+    AnswerModel.incorrect('3'),
+    AnswerModel.incorrect('8'),
+    AnswerModel.incorrect('5'),
+    AnswerModel.correct('7'),
   ], false),
-  new QuestionModel(3, 'Which is the smaller club in Premier League?', [
-    AnswerModel.incorrect('Burnley'),
+  new QuestionModel(3, 'In what year did Barcelona win their first champions league?', [
+    AnswerModel.incorrect('1990'),
+    AnswerModel.incorrect('2001'),
+    AnswerModel.incorrect('1987'),
+    AnswerModel.correct('1992'),
+  ], false),
+  new QuestionModel(4, 'Which country has won the most World Cups?', [
+    AnswerModel.incorrect('Italy'),
+    AnswerModel.incorrect('France'),
+    AnswerModel.incorrect('England'),
+    AnswerModel.correct('Brazil'),
+  ], false),
+  new QuestionModel(5, 'The Champions League has been won only once by a team from Romania. Can you name them?', [
+    AnswerModel.incorrect('Feyenoord'),
+    AnswerModel.incorrect('Hamburger SV'),
+    AnswerModel.incorrect('Red Star Belgrade'),
+    AnswerModel.correct('Steaua Bucharest'),
+  ], false),
+  new QuestionModel(6, 'Which team was the first from the UK to win the European Cup?', [
+    AnswerModel.incorrect('Liverpool'),
+    AnswerModel.incorrect('Aston Villa'),
+    AnswerModel.incorrect('Nottingham Forest'),
+    AnswerModel.correct('Celtic'),
+  ], false),
+  new QuestionModel(7, 'With three titles each, which two teams have won the most European Championships?', [
+    AnswerModel.incorrect('Italy and France'),
+    AnswerModel.incorrect('Portugal and Spain'),
+    AnswerModel.incorrect('Germany and Italy'),
+    AnswerModel.correct('Spain and Germany'),
+  ], false),
+  new QuestionModel(8, 'English rock star Elton John was twice the owner of which football club?', [
     AnswerModel.incorrect('Brentford'),
-    AnswerModel.incorrect('Everton'),
-    AnswerModel.correct('Chelsea'),
-  ], false),
-  new QuestionModel(4, 'Which is Penaldo\'s specialty?', [
-    AnswerModel.incorrect('Head penalty'),
-    AnswerModel.incorrect('Penalty outside the box'),
-    AnswerModel.incorrect('Penalty inside the box'),
-    AnswerModel.correct('All other penalty alternatives'),
-  ], false),new QuestionModel(5, 'Who was the Ballon d\'or winner just because penalty goals?', [
-    AnswerModel.incorrect('Cristiano Penaldo'),
-    AnswerModel.incorrect('Pristiano Conaldo'),
-    AnswerModel.incorrect('Penaldo'),
-    AnswerModel.correct('All other alternatives'),
+    AnswerModel.incorrect('West Ham'),
+    AnswerModel.incorrect('Southampton'),
+    AnswerModel.correct('Watford'),
   ], false)
 ]
 
